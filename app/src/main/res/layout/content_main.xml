@@ -9,8 +9,7 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.joey.majikcreen.MainActivity"
-    tools:showIn="@layout/activity_main">
+    tools:context="com.example.joey.majikcreen.MainActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -25,7 +24,7 @@
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Me a Message!"
+        android:text="Send Daniel's a Message!"
         android:id="@+id/button"
         android:layout_centerVertical="true"
         android:layout_centerHorizontal="true" />
