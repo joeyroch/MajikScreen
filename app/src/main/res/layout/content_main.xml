@@ -26,7 +26,7 @@
         android:layout_height="wrap_content"
         android:text="Send Dr. Daniel's a Kind Message!"
         android:id="@+id/button"
-        android:layout_centerVertical="true"
+        android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>
