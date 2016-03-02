@@ -8,6 +8,15 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.RelativeLayout;
+import android.widget.Button;
+import android.graphics.Color;
+import android.widget.EditText;
+import android.content.res.Resources;
+import android.util.TypedValue;
+import android.widget.TextView;
+
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -15,18 +24,31 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
+        RelativeLayout rl = new RelativeLayout(this);
+        rl.setBackgroundColor(Color.rgb(120,145,225));
 
-        FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
-        fab.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Snackbar.make(view, "Send Dr. Daniels a message!", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
-            }
-        });
+        Button messageDButton = new Button(this);
+        messageDButton.setText("Send Dr. Daniels a message!");
+        messageDButton.setBackgroundColor(Color.BLACK);
+        messageDButton.setTextColor(Color.WHITE);
+        messageDButton.setId(1);
+
+        RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        buttonDetails.topMargin = 274;
+        rl.addView(messageDButton, buttonDetails);
+
+        TextView displayHours = new TextView(this);
+        displayHours.setText("Dr. Daniels Office Hours:\nM W F 10:00 - 11:00 \nTh 3:00 - 5:00");
+        displayHours.setTextColor(Color.BLACK);
+        displayHours.setTextSize(40);
+        RelativeLayout.LayoutParams displayDetails = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayDetails.addRule(RelativeLayout.CENTER_VERTICAL+1);
+        displayDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        rl.addView(displayHours, displayDetails);
+
+
+        setContentView(rl);
     }
 
     @Override
