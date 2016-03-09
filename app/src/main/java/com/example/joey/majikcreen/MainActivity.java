@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams clickButton = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         clickButton.addRule(RelativeLayout.CENTER_HORIZONTAL);
         clickButton.topMargin = 274;
-        afterClick.addView(messageDButton, buttonDetails);
-
         TextView displayMessage = new TextView(this);
         displayMessage.setText("Choose your message type\n");
         displayMessage.setTextColor(Color.BLACK);
@@ -42,7 +40,9 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout.LayoutParams displayBDetails = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         displayBDetails.addRule(RelativeLayout.CENTER_VERTICAL+1);
         displayBDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        afterClick.addView(displayMessage, displayDetails);
+        afterClick.addView(displayMessage, displayBDetails);
+
+
 
 
         //messageDButton
