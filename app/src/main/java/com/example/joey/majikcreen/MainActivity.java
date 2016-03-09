@@ -27,12 +27,24 @@ public class MainActivity extends AppCompatActivity {
         RelativeLayout rl = new RelativeLayout(this);
         rl.setBackgroundColor(Color.rgb(120,145,225));
 
+        //new layout for button click
+        final RelativeLayout afterClick = new RelativeLayout(this);
+        afterClick.setBackgroundColor(Color.RED);
+
+
+        //messageDButton
         Button messageDButton = new Button(this);
         messageDButton.setText("Send Dr. Daniels a message!");
         messageDButton.setBackgroundColor(Color.BLACK);
         messageDButton.setTextColor(Color.WHITE);
         messageDButton.setId(1);
+        messageDButton.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View v) {
+                setContentView(afterClick);
+            }
+        });
 
+        //Relative Layout for Home Screen
         RelativeLayout.LayoutParams buttonDetails = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
         buttonDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
         buttonDetails.topMargin = 274;
@@ -72,4 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+
+
 }
