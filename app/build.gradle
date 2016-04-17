@@ -20,9 +20,13 @@ android {
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile files('/Users/erelsbernd/Documents/IowaStateSpring2016/cpre186/MajikScreen/Libs/activation.jar')
+    compile files('/Users/erelsbernd/Documents/IowaStateSpring2016/cpre186/MajikScreen/Libs/additionnal.jar')
+    compile files('/Users/erelsbernd/Documents/IowaStateSpring2016/cpre186/MajikScreen/Libs/javax.mail.jar')
+    compile files('/Users/erelsbernd/Documents/IowaStateSpring2016/cpre186/MajikScreen/Libs/mail.jar')
 }

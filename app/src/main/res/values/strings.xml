@@ -2,4 +2,7 @@
     <string name="app_name">Majik $creen</string>
     <string name="action_settings">Settings</string>
     <string name="title_activity_login">Login</string>
+    <string name="erinEmail">erine@iastate.edu</string>
+    <string name="yourSubject">Your subject</string>
+    <string name="emailInputMsg">Email message goes here\n Please include Name and Email</string>
 </resources>

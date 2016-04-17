@@ -9,25 +9,31 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     app:layout_behavior="@string/appbar_scrolling_view_behavior"
-    tools:context="com.example.joey.majikcreen.MainActivity">
+    tools:context="com.example.joey.majikcreen.MainActivity"
+    android:id="@+id/Layout">
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAppearance="?android:attr/textAppearanceLarge"
-        android:text="Dr. Daniels&apos; Office Hours: Monday, Wednesday 10-11am"
+        android:text="DR. DANIELS"
         android:id="@+id/textView"
         android:layout_alignParentTop="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="120dp" />
+        android:layout_marginStart="123dp" />
 
-    <Button
+    <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Send Daniel's a Message!"
-        android:id="@+id/button"
-        android:layout_marginBottom="128dp"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:text="HELLO"
+        android:id="@+id/textView2"
+        android:layout_alignStart="@+id/textView"
+        android:layout_below="@+id/textView" />
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="M W F"
+        android:id="@+id/textView3"
+        android:layout_alignEnd="@+id/textView"
+        android:layout_below="@+id/textView2" />
 </RelativeLayout>

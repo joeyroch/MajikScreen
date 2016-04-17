@@ -3,6 +3,11 @@ package com.example.joey.majikcreen;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
+import android.app.Activity;
+import android.os.Bundle;
+import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -17,7 +22,14 @@ import android.widget.EditText;
 import android.content.res.Resources;
 import android.util.TypedValue;
 import android.widget.TextView;
-
+import android.content.Intent;
+import android.util.Log;
+import android.widget.Toast;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Scanner;
+import java.io.FileNotFoundException;
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -36,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         final RelativeLayout rl = new RelativeLayout(this);
+        //final RelativeLayout rl = (RelativeLayout)findViewById(R.id.Layout);
         rl.setBackgroundColor(Color.rgb(0, 80, 128));
 
         //relative layout for button click
@@ -54,10 +67,33 @@ public class MainActivity extends AppCompatActivity {
         displayBDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
         afterClick.addView(displayMessage, displayBDetails);
 
+         //FILE STUFF
+        String username = null;
+        String password = null;
+        String mainMessage = null;
+        String firstDays = null;
+        String secondDays = null;
+        StringBuilder sb = new StringBuilder();
+
+        try {
+            InputStream io = getResources().openRawResource(R.raw.cwa);
+            int ch;
+            while((ch = io.read()) != -1){
+                sb.append((char) ch);
+            }
+            io.close();
+        }catch (IOException e){
+
+        }
+        Scanner scanner = new Scanner(sb.toString());
+        username = scanner.nextLine();
+        password = scanner.nextLine();
+        mainMessage = scanner.nextLine() + "                              " + scanner.nextLine() + "     " +scanner.nextLine();
+        scanner.close();
 
 
         //messageDButton
-        Button messageDButton = new Button(this);
+        final Button messageDButton = new Button(this);
         messageDButton.setText("Send Dr. Daniels a message!");
         messageDButton.setBackgroundColor(Color.rgb(131, 139, 131));
         messageDButton.setTextColor(Color.WHITE);
@@ -65,6 +101,7 @@ public class MainActivity extends AppCompatActivity {
         messageDButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 setContentView(afterClick);
+                //put in OnClick(View v) stuff
             }
         });
 
@@ -76,16 +113,40 @@ public class MainActivity extends AppCompatActivity {
 
 
         //display message
+        TextView displayMainMessage = new TextView(this);
+        displayMainMessage.setText(mainMessage);
+        displayMainMessage.setTextColor(Color.BLACK);
+        displayMainMessage.setTextSize(40);
+        displayMainMessage.setTypeface(null, Typeface.BOLD);
+        displayMainMessage.setTypeface(Typeface.SERIF);
+        RelativeLayout.LayoutParams displayDetails1 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayDetails1.addRule(RelativeLayout.CENTER_VERTICAL + 1);
+        displayDetails1.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        displayMainMessage.setId(View.generateViewId());
+        rl.addView(displayMainMessage, displayDetails1);
+
         TextView displayHours = new TextView(this);
-        displayHours.setText("\n\n  Dr. Daniels Office Hours:\n        M W F 10:00 - 11:00 \n             Th 3:00 - 5:00");
+        displayHours.setText(firstDays);
         displayHours.setTextColor(Color.BLACK);
         displayHours.setTextSize(40);
         displayHours.setTypeface(null, Typeface.BOLD);
         displayHours.setTypeface(Typeface.SERIF);
-        RelativeLayout.LayoutParams displayDetails = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
-        displayDetails.addRule(RelativeLayout.CENTER_VERTICAL + 1);
-        displayDetails.addRule(RelativeLayout.CENTER_HORIZONTAL);
-        rl.addView(displayHours, displayDetails);
+        RelativeLayout.LayoutParams displayDetails2 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayDetails2.addRule(RelativeLayout.CENTER_VERTICAL);
+        displayDetails2.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        displayMainMessage.setId(View.generateViewId());
+        rl.addView(displayHours, displayDetails2);
+
+        TextView displayHours2 = new TextView(this);
+        displayHours2.setText(secondDays);
+        displayHours2.setTextColor(Color.BLACK);
+        displayHours2.setTextSize(40);
+        displayHours2.setTypeface(null, Typeface.BOLD);
+        displayHours2.setTypeface(Typeface.SERIF);
+        RelativeLayout.LayoutParams displayDetails3 = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.WRAP_CONTENT, RelativeLayout.LayoutParams.WRAP_CONTENT);
+        displayDetails3.addRule(RelativeLayout.CENTER_VERTICAL);
+        displayDetails3.addRule(RelativeLayout.CENTER_HORIZONTAL);
+        rl.addView(displayHours2, displayDetails3);
 
 
 
@@ -179,4 +240,7 @@ public class MainActivity extends AppCompatActivity {
         AppIndex.AppIndexApi.end(client, viewAction);
         client.disconnect();
     }
+
+    //method for sending email
+
 }
